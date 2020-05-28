@@ -26,14 +26,35 @@
       <div class="header__bar row">
         <h1 class="grid-6"><a href="/">Chartworld</a></h1>
         <div class="user_nav grid-6">
-          <a class="post" href="/tweets/new">投稿</a>
+          <div class="howto">使い方</div>
+          <a class="post" href="/charts/new">投稿</a>
         </div>
       </div>
     </header>
-
+      <div id="fly-in">  
+        <div><span>ようこそ</span>Cinematic</div>
+        <div>Fade Away<span>into the distance</span></div>
+        <div>Still Loops <span> for eternity</span></div>
+        <div><span>Just CSS</span> and HTML</div>
+        <%# <div><span>Very</span>Cinematic</div>
+        <div>Fade Away<span>into the distance</span></div>
+        <div>Still Loops <span> for eternity</span></div>
+        <div><span>Just CSS</span> and HTML</div> %>
+      </div>
     <div class="contents row">
      <% @charts.each do |chart| %>
       <div class="content_post" style="image: url(<%= chart.image %>);">
+        <div class="more">
+          <%# <span><%= image_tag 'arrow_top.png' %></span> 
+           <ul class="more_list">
+            <li>
+              <%= link_to '編集', "/charts/#{chart.id}/edit", method: :get %>
+            </li> 
+            <li>
+              <%= link_to '削除', "/charts/#{chart.id}", method: :delete %>
+            </li>
+        </ul>
+      </div>
       <%= simple_format(chart.text) %>
       <span class="name">
         <%= chart.name %>
