@@ -1,16 +1,53 @@
 <!DOCTYPE html>
 <html>
-<head>
-</head>
-<body>
-  <header>
-    <div class=mainheader>
-      <h1 class=tytle><a href="/">ChartWorld</a></h1>
-      <div class=user>ユーザー名</div>
-      <div class=send>send</div>
+  <head>
+    <title>Chartworld</title>
+    <%# <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%# <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %> %>
+    <%# <%= csrf_meta_tags %> 
+    <%# <script type="text/javascript">
+      WebFontConfig = {
+        google: { families: [ 'Unica+One::latin' ] }
+      };
+      // (function() {
+      //   var wf = document.createElement('script');
+      //   wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+      //     '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+      //   wf.type = 'text/javascript';
+      //   wf.async = 'true';
+      //   var s = document.getElementsByTagName('script')[0];
+      //   s.parentNode.insertBefore(wf, s);
+      // })();
+    </script> %>
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="header__bar row">
+        <h1 class="grid-6"><a href="/">Chartworld</a></h1>
+        <div class="user_nav grid-6">
+          <a class="post" href="/tweets/new">投稿</a>
+        </div>
+      </div>
+    </header>
+
+    <div class="contents row">
+     <% @charts.each do |chart| %>
+      <div class="content_post" style="image: url(<%= chart.image %>);">
+      <%= simple_format(chart.text) %>
+      <span class="name">
+        <%= chart.name %>
+      </span>
     </div>
-  </header>
-  <main>
-    <div class=top>sdfgfgs</div>
-  </main>
-</body>
+  <% end %>
+</div>
+
+    <%= yield %>
+
+    <footer>
+      <p>
+        Copyright ChartWorld.
+      </p>
+    </footer>
+  </body>
+</html>
