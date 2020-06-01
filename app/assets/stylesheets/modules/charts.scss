@@ -43,6 +43,7 @@ body,html {
 }
 
 body {
+  background-color: rgb(205, 236, 248);
   padding-top: 60px;
 }
 
@@ -57,7 +58,7 @@ line-height: 1.57;
 
 a {
   text-decoration: none;
-  color: $dark;
+  color: rgb(64, 68, 63);
   &:hover {
     color: $accent;
   }
@@ -127,8 +128,9 @@ header.header {
     position: relative;
     h1.grid-6 {
       font-size: 30px;
-      line-height: 41px;
+      line-height: 50px;
       float: left;
+
       a {
         display: block;
       }
@@ -138,15 +140,25 @@ header.header {
       text-align: right;
       display: flex;
       .howto{
+        height: 70px;
+        line-height: 50px;
         color: #57C3E9;
         
 
        }
-      a.post {
+       a{
+        height: 70px;
+        line-height: 50px;  
+        margin-left: 20px;
+       }
+      .post {
         @extend .btn;
         width: 120px;
         display: inline-left;
-        margin-left: 10px;
+        margin-left: 20px;
+        height: 40px;
+        line-height: 30px;
+ 
       }
     }
   }
@@ -202,7 +214,8 @@ header.header {
 
 #fly-in {
   font-size: 6em;
-  margin: 50vh auto;
+  // margin: 50vh auto;
+  margin-top: 88px;
   height: 15px; 
   text-transform: uppercase;
   display: flex;
@@ -257,6 +270,7 @@ header.header {
   }
 }
 div.contents.row {
+  margin-top: 500px;
   display: flex;
   flex-flow:wrap;
   h2 {
@@ -275,9 +289,9 @@ div.contents.row {
     @include boxBase(20px 0 ,30px);
     position: relative;
     height: 400px;
-    width:45%;
+    width:43%;
     box-sizing:content-box;
-    margin-right: 10px;
+    margin-right: 5px;
     color: rgb(66, 179, 194);
     background-size: cover;
     background-position: center center;
@@ -334,7 +348,7 @@ div.contents.row {
         }
       }
     }
-    p {
+    .text {
       @extend .serif;
       position: absolute;
       left: 30px;
@@ -417,6 +431,43 @@ form {
     &:hover {
       text-decoration: underline;
     }
+  }
+}
+.contents{
+  // @include boxBase(20px 0 ,30px);
+    position: relative;
+    height: 400px;
+    width:100%;
+    box-sizing:content-box;
+    margin-right: 10px;
+    color: rgb(66, 179, 194);
+    background-size: cover;
+    background-position: center center;
+  .content{
+    @include boxBase(20px 0 ,30px);
+    position: relative;
+    height: 400px;
+    width:95%;
+    box-sizing:content-box;
+    margin-right: 10px;
+    color: rgb(66, 179, 194);
+    background-size: cover;
+    background-position: center center;
+    border-radius: 3px;
+    box-shadow: 0 0 10px rgba($black,0.2);
+    .list{
+      ul{
+        margin-left: 94%;
+      }
+    }
+        p{
+         font-size: 15px;
+         font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        }
+        .name{
+
+  
+        }
   }
 }
 

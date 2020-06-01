@@ -3,7 +3,7 @@
   <head>
     <title>Chartworld</title>
     <%# <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%# <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %> %>
+    <%# <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %> 
     <%# <%= csrf_meta_tags %> 
     <%# <script type="text/javascript">
       WebFontConfig = {
@@ -25,14 +25,22 @@
     <header class="header">
       <div class="header__bar row">
         <h1 class="grid-6"><a href="/">Chartworld</a></h1>
-        <div class="user_nav grid-6">
-          <div class="howto">使い方</div>
-          <a class="post" href="/charts/new">投稿</a>
+          <% if user_signed_in?%>
+           <div class="user_nav grid-6">
+             <div class="howto">使い方</div>
+             <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+             <%= link_to "投稿", "/charts/new", class: "post" %>
+          <% else %>
+            <div class="grid-6">
+              <%= link_to "ログイン", new_user_session_path, class: 'post' %>
+              <%= link_to "新規登録", new_user_registration_path, class: 'post' %>
+            </div>
+          <% end %>
         </div>
       </div>
     </header>
-      <div id="fly-in">  
-        <div><span>ようこそ</span>Cinematic</div>
+      <div id="fly-in"> 
+        <div><span>ようこそ</span>ChartWorld</div>
         <div>Fade Away<span>into the distance</span></div>
         <div>Still Loops <span> for eternity</span></div>
         <div><span>Just CSS</span> and HTML</div>
@@ -43,25 +51,33 @@
       </div>
     <div class="contents row">
      <% @charts.each do |chart| %>
-      <div class="content_post" style="image: url(<%= chart.image %>);">
+      <div class="content_post" style="background-image: url(<%= chart.image %>);">
         <div class="more">
           <%# <span><%= image_tag 'arrow_top.png' %></span> 
            <ul class="more_list">
+            <li>
+              <%= link_to '詳細', "/charts/#{chart.id}", method: :get %>
+            </li>
+           <%# <% if user_signed_in? && current_user.id == chart.user_id %>  
+            
             <li>
               <%= link_to '編集', "/charts/#{chart.id}/edit", method: :get %>
             </li> 
             <li>
               <%= link_to '削除', "/charts/#{chart.id}", method: :delete %>
             </li>
+          <%# <%end%> 
         </ul>
       </div>
-      <%= simple_format(chart.text) %>
+      <div class= "text">
+        <%= simple_format(chart.text) %>
+      </div>
       <span class="name">
         <%= chart.name %>
       </span>
-    </div>
-  <% end %>
-</div>
+   　　 </div>
+  　　　<% end %>
+   　 </div>
 
     <%= yield %>
 

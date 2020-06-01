@@ -25,7 +25,11 @@ class ChartsController < ApplicationController
     chart = Chart.find(params[:id])
     chart.update(charts_params)
   end
-
+  
+  def show
+    @chart = Chart.find(params[:id])
+  end
+  
   private
   def charts_params
     params.require(:chart).permit(:name, :image, :text)
